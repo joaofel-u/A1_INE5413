@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1552575018 source:/home/100000000944466/Desktop/EDD_Grafo/main.cpp
+	<iostream>
+	"SimpleGraph.h"
+
+1552574993 source:/home/100000000944466/Desktop/EDD_Grafo/src/SimpleGraph.cpp
+	"SimpleGraph.h"
+
+1552574984 /home/100000000944466/Desktop/EDD_Grafo/include/SimpleGraph.h
+	<vector>
+	<unordered_set>
+	<iostream>
+
