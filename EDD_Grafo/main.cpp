@@ -1,28 +1,16 @@
 #include <iostream>
 
-
 #include "./include/SimpleGraph.h"
 using namespace std;
 
-int main()
+int main(int argc, char const *argv[])
 {
-    GrafoSimples g;
-
-    //criação de vértices
-    for (int i=0; i<3; i++){
-        g.inserirVertice();
+    if (argc > 1) {
+        string arquivo = argv[1];
+        GrafoSimples* grafo = new GrafoSimples(arquivo);
+    } else {
+        cout << "Argumentos insuficientes para execução do programa\n";
     }
-
-    //criação das arestas
-    g.inserirAresta(0, 1);
-    g.inserirAresta(1, 2);
-
-    if(g.pertAresta(0, 1)){
-        cout<<"Achou 0 -- 1\n";
-    }else{
-        cout<<"Nao achou 0 -- 1\n";
-    }
-    g.imprimir();
 
     return 0;
 }

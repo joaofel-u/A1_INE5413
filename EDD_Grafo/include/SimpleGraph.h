@@ -1,48 +1,53 @@
 #ifndef SIMPLEGRAPH_H
 #define SIMPLEGRAPH_H
 
-#include<vector>
-#include<unordered_set>
+#include <vector>
+#include <unordered_set>
 #include <iostream>
+#include <string>
+#include <limits>
+
 using namespace std;
 
 class GrafoSimples
 {
+    private:
+        vector< unordered_set<int> > adjs; //ver
+        int qtdArestas_;
+
     public:
-        GrafoSimples();
+        GrafoSimples(string arquivo);
         ~GrafoSimples();
-        vector< unordered_set< int> > adjs;
 
         //retorna o id do vertice inserido
-        int inserirVertice(){
-            adjs.push_back( unordered_set<int>() );
-        }
+        int inserirVertice(string rotulo);
 
         //inserir nova aresta
-        void inserirAresta(int u, int v){
-            adjs[u].insert(v);
-            adjs[v].insert(u);
-        }
+        void inserirAresta(int u, int v);
 
-        //grau do vértice
-        int grau(int v){
-            return adjs[v].size();
-        }
-        //pertinencia de arestas
-        bool pertAresta(int u, int v){
-            return adjs[u].find(v) != adjs[u].end();
+        // imprime o grafo
+        void imprimir();
 
-        }
+        // retorna a quantidade de vertices do grafo
+        int qtdVertices();
 
-        void imprimir(){
-            for(int v=0; v<adjs.size(); v++){
-                cout<<v<<": ";
-                for (auto pr: adjs[v]){
-                    cout<<pr<<",";
-                }
-                cout<<"\n";
-            }
-        }
+        // retorna a quantidade de arestas do grafo
+        int qtdArestas();
+
+        // retorna o grau de um vertice v
+        int grau(int v);
+
+        // retorna o rotulo de um vertice v
+        string rotulo(int v);
+
+        // retorna a lista de vizinhos de um vertice v
+        vector<int> vizinhos(int v);
+
+        // retorna true caso exista uma aresta de u para v
+        bool haAresta(int u, int v);
+
+        // retorna o peso da aresta que liga u e v
+        float peso(int u, int v);
 };
 
 #endif // SIMPLEGRAPH_H
