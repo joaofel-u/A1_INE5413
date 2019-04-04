@@ -2,7 +2,7 @@
 #define SIMPLEGRAPH_H
 
 #include <vector>
-#include <unordered_set>
+#include <unordered_map>
 #include <iostream>
 #include <string>
 #include <limits>
@@ -12,7 +12,8 @@ using namespace std;
 class GrafoSimples
 {
     private:
-        vector< unordered_set<int> > adjs; //ver
+        vector< unordered_map<int, int> > adjs; //ver
+        vector< string > rotulos; //ver
         int qtdArestas_;
 
     public:

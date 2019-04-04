@@ -2,7 +2,8 @@
 
 GrafoSimples::GrafoSimples(string arquivo)
 {
-    qtdArestas_ = 0;
+    rotulos = new vector<string>();
+  qtdArestas_ = 0;
 	// fazer a leitura do arquivo para construcao do grafo
 }
 
@@ -13,15 +14,16 @@ GrafoSimples::~GrafoSimples()
 
 int GrafoSimples::inserirVertice(string rotulo)
 {
-	adjs.push_back( unordered_set<int>() );
-    // ver onde vai ser guardado o rotulo
-    return adjs.size()-1;
+	adjs.push_back( unordered_map<int, int>() );
+	rotulos.push_back( rotulo );
+  // ver onde vai ser guardado o rotulo
+  return adjs.size()-1;
 }
 
-void GrafoSimples::inserirAresta(int u, int v)  // VER
+void GrafoSimples::inserirAresta(int u, int v, int peso)  // VER
 {
-	adjs[u].insert(v);
-	adjs[v].insert(u);
+	adjs[u].insert(v, peso);
+	adjs[v-1].insert(u, peso);
     // ver onde guardar o peso da aresta
 	qtdArestas_ += 1;
 }
@@ -38,7 +40,7 @@ int GrafoSimples::qtdArestas()
 
 int GrafoSimples::grau(int v)
 {
-	return adjs[v].size();
+	return adjs[v-1].size();
 }
 
 string GrafoSimples::rotulo(int v)
@@ -48,11 +50,11 @@ string GrafoSimples::rotulo(int v)
 
 vector<int> GrafoSimples::vizinhos(int v)  // TESTAR
 {
-	int tam = adjs[v].size();
+	int tam = adjs[v-1].size();
 	vector<int>* vizinhos = new vector<int>();
     vizinhos->resize(tam);
 
-	for (auto it = adjs[v].begin(); it != adjs[v].end(); ++it)
+	for (auto it = adjs[v-1].begin(); it != adjs[v-1].end(); ++it)
 		vizinhos->push_back(*it);
 
 	return *vizinhos;
@@ -74,11 +76,11 @@ float GrafoSimples::peso(int u, int v)  // implementar corretamente apos decidir
 
 void GrafoSimples::imprimir()
 {
-	for(int v=0; v<adjs.size(); v++) {
-		cout<<v<<": ";
+	for(int v = 0; v < adjs.size(); v++) {
+		cout << v << ": ";
 		for (auto pr: adjs[v])
-			cout<<pr<<",";
+			cout << pr << ", ";
 
-		cout<<"\n";
+		cout << "\n";
 	}
 }
