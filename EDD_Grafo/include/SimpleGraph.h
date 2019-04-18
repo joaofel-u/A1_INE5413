@@ -6,9 +6,10 @@
 #include <iostream>
 #include <string>
 #include <limits>
-#include<fstream>
+#include <fstream>
 
 using namespace std;
+
 
 class GrafoSimples
 {
