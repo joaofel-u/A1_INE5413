@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <limits>
+#include<fstream>
 
 using namespace std;
 
@@ -19,6 +20,9 @@ private:
 public:
     GrafoSimples();
     ~GrafoSimples();
+
+    // le o arquivop
+    int readFile(string fileName);
 
     //retorna o id do vertice inserido
     int inserirVertice(string rotulo);

@@ -12,6 +12,45 @@ GrafoSimples::~GrafoSimples()
     // dtor
 }
 
+int GrafoSimples::readFile(string fileName)
+{
+    ifstream myReadFile;
+    myReadFile.open(fileName);
+    if (myReadFile.fail()) {
+        return 1;
+    }
+    // Leitura do arquivo e construcao do grafo
+    string output;
+    int vertices;
+
+    if (myReadFile.is_open()) {
+        myReadFile >> output; //descarta string *vertices
+        myReadFile >> output; //pega a quantidade de vertices
+        vertices = stoi(output);
+
+        for (size_t i = 0; i < vertices; i++) {
+            int vertice;
+            string rotulo;
+            myReadFile >> vertice;
+            getline(myReadFile, rotulo);
+            inserirVertice(rotulo);
+        }
+
+        myReadFile >> output; //descarta string *edges
+
+        while (true) {
+            int verticeOrigem, verticeDestino;
+            float peso;
+            myReadFile >> verticeOrigem >> verticeDestino >> peso;
+            if (myReadFile.eof())
+              break;
+            inserirAresta(verticeOrigem, verticeDestino, peso);
+        }
+    }
+    myReadFile.close();
+    return 0;
+}
+
 int GrafoSimples::inserirVertice(string rotulo)
 {
     adjs.push_back( unordered_map<int, float>() );
@@ -75,6 +114,9 @@ float GrafoSimples::peso(int u, int v)
 
 void GrafoSimples::imprimir()
 {
+    for (size_t i = 0; i < rotulos.size(); i++) {
+        cout << i+1 <<": " << rotulos[i] << "\n";
+    }
     for(int v = 0; v < adjs.size(); v++) {
         cout << v+1 << ": ";
         for (auto pr: adjs[v])
