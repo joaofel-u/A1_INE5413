@@ -105,6 +105,9 @@ bool GrafoSimples::haAresta(int u, int v)
 
 float GrafoSimples::peso(int u, int v)
 {
+    if (u == v)
+        return 0;
+        
     auto it = adjs[u].find(v);
     if (it == adjs[u].end())
         return INFINITE_FLOAT;

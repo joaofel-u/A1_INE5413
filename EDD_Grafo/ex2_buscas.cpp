@@ -27,7 +27,7 @@ int main(int argc, char const *argv[]) {
     int num_vertices = grafo->qtdVertices();
 
 	// verifica se o vertice passado por parametro existe dentro do grafo
-	if (s > num_vertices) {
+	if (s > num_vertices || s == 0) {
 		cout << "O vértice " << s << " não existe no grafo " << argv[1] << endl;
 		return 1;
 	}
@@ -35,10 +35,10 @@ int main(int argc, char const *argv[]) {
 
 	// BUSCA EM LARGURA (nao utiliza Av por nao precisar armazenar os antecessores)
     // Inicializacao
-    bool* c = new bool[num_vertices];
-    int* d = new int[num_vertices];
+    bool* c = new bool[num_vertices+1];
+    int* d = new int[num_vertices+1];
 
-    for (int i = 0; i < num_vertices; i++) {
+    for (int i = 0; i <= num_vertices; i++) {
         c[i] = false;
         d[i] = INFINITE_INT;
     }
@@ -72,7 +72,7 @@ int main(int argc, char const *argv[]) {
         control = false;
         string out = to_string(nivel) + ": ";
 
-        for (int i = 0; i < num_vertices; i++) {
+        for (int i = 0; i <= num_vertices; i++) {
             if (d[i] == nivel) {
                 control = true;
                 out += to_string(i) + ",";
