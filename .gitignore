@@ -1,0 +1,5 @@
+# ignore .net files
+*.net
+
+# ignore .o object files
+*.o
