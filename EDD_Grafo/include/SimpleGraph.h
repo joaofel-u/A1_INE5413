@@ -8,6 +8,9 @@
 #include <limits>
 #include <fstream>
 
+#define INFINITE_FLOAT numeric_limits<float>::max()
+#define INFINITE_INT numeric_limits<int>::max()
+
 using namespace std;
 
 
@@ -23,7 +26,7 @@ public:
     ~GrafoSimples();
 
     // le o arquivop
-    int readFile(string fileName);
+    int ler(string fileName);
 
     //retorna o id do vertice inserido
     int inserirVertice(string rotulo);
