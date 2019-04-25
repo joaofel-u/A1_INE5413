@@ -1,6 +1,9 @@
 # ignore .net files
 *.net
 
+# ignore .graphml (graphonline.ru ml files)
+*.graphml
+
 # ignore .o object files
 *.o
 
