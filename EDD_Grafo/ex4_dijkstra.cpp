@@ -47,16 +47,17 @@ int main(int argc, char const *argv[]) {
     }
 
     d[s] = 0;
+    a[s] = NULL;
 
     bool existeCvFalse = true;
     while(existeCvFalse) {
-        
-        int min = INT_MAX;
+
+        int min = INFINITE_INT;
         int min_index;
         for (int v = 1; v <= num_vertices; v++) {
             if (!c[v] && (d[v] < min)) {
                 min = d[v];
-                min_index = v; 
+                min_index = v;
             }
         }
 
@@ -86,26 +87,29 @@ int main(int argc, char const *argv[]) {
     }
 
     for(int v = 1; v <= num_vertices; v++){
-        cout << "a: " << a[v] << " | ";
+//        cout << "a: " << a[v] << " | ";
     }
 
     // Saida
     for (int i = 1; i <= num_vertices; i++) {
-        string caminho;
 
-        int aux = a[i];
-        cout << "\n:::::::\n";
-        while(aux != NULL) {
-            caminho += aux;
-            cout << aux << ", ";
+        int aux = i;
+        string caminho = to_string(aux);
+        //cout << "\n" << i << ": ";
+        while(aux != s) {
+            //cout << aux << ", ";
             // pegar de tras ra frente
             aux = a[aux];
+            caminho = to_string(aux) + "," + caminho;
+            //cout << "\n" << i << "----------\n";
         }
-        //cout << "\n" << i << " : " << caminho << "; d=" << d[i]; 
+        //caminho = to_string(s) + ", " + caminho;
+        //cout << s << "; d = " << d[i];
+        cout << i << ": " << caminho << "; d=" << d[i] << "\n";
+        //cout << "\n" << i << " : " << caminho << "; d=" << d[i];
         //cout << "aaa";
     }
-
-
+    cout << "\n";
     // na hora de imprimir lembrar de utilizar vertice+1
 
 
