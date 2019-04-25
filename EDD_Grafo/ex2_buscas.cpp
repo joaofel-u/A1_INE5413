@@ -19,6 +19,7 @@ int main(int argc, char const *argv[]) {
 
     if (!grafo->ler(argv[1])) {
         cout << "Arquivo inexistente\n";
+        return 1;
     }
 
 
