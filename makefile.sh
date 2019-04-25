@@ -8,6 +8,8 @@ g++ -o ../runMain.o main.cpp SimpleGraph.o -std=c++17
 
 g++ -o ../runBFS.o ex2_buscas.cpp SimpleGraph.o -std=c++17
 
+g++ -o ../runDIJK.o ex4_dijkstra.cpp SimpleGraph.o -std=c++17
+
 g++ -o ../runFW.o ex5_floyd-warshall.cpp SimpleGraph.o -std=c++17
 
 rm SimpleGraph.o
