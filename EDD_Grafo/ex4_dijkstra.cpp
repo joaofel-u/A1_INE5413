@@ -78,7 +78,7 @@ int main(int argc, char const *argv[]) {
         for(int v = 1; v <= num_vertices; v++){
             if (!c[v]) {
                 existeCvFalse = true;
-                cout << "false: " << v << "\n";
+                //cout << "false: " << v << "\n";
                 break;
             }
         }
@@ -90,20 +90,19 @@ int main(int argc, char const *argv[]) {
     }
 
     // Saida
-    for (int i = 1; i < num_vertices; i++) {
+    for (int i = 1; i <= num_vertices; i++) {
         string caminho;
-        for(int j = 0; j < i; i++) {
-            caminho += a[j];
-            // ver aq se é de tras pra frente no no vetor 'a'
-        }
 
         int aux = a[i];
+        cout << "\n:::::::\n";
         while(aux != NULL) {
             caminho += aux;
+            cout << aux << ", ";
             // pegar de tras ra frente
             aux = a[aux];
         }
-        cout << i << " : " << caminho << "; d=" << d[i]; 
+        //cout << "\n" << i << " : " << caminho << "; d=" << d[i]; 
+        //cout << "aaa";
     }
 
 
