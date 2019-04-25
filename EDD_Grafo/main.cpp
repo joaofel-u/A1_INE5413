@@ -15,10 +15,13 @@ int main(int argc, char** argv) {
 
     if (!grafo->ler(argv[1])) {
         cout << "Arquivo inexistente" << '\n';
+        return 1;
     }
 
 
     grafo->imprimir();
+
+    delete grafo;
 
     return 0;
 }
